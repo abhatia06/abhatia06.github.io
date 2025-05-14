@@ -1,0 +1,201 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #018281;
+}
+
+.time {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(161, 161, 161);
+    right: 10px;
+    top: 2px;
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    text-align:center;
+    padding: 0;
+    line-height: 1.5px;
+}
+
+#top {
+    background-color: #018281;
+    align-content: center;
+}
+
+.button1 {
+    font-family: 'windows95';
+    align-content: center;
+    
+}
+
+.bottom-container {
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    left: 0;
+    background-color: #c3c3c3;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #404040;
+    border-right: 2px solid #404040;
+
+    font-family: 'windows95';
+    display: flex;
+    align-content: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+
+    z-index: 100;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'windows95';
+    src: url('w95fa.woff') format('woff');
+}
+
+
+.app-window {
+    font-family: 'windows95';
+    overflow-wrap: break-word;
+    background: rgb(210, 210, 210);
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 5;
+    user-select: none;
+
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.15s ease-in-out, opacity 0.15s ease-out;
+}
+
+.app-window.show {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.app-header {   
+    display: flex;
+    position: relative;
+    background: darkblue;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    cursor: move;
+    z-index: 5;
+    user-select: none;
+}
+
+.close {
+    border-color: rgba(156, 155, 155, 0.805);
+    position: absolute;
+    cursor: pointer;
+    background-color: rgb(220, 220, 220);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    left: 270px;
+    top: 3px;
+    user-select: none;
+}
+
+.image-container {
+    display: grid;
+    place-content: center;
+    user-select: none;
+}
+
+.pop-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.pop-image:hover {
+    transform: scale(1.2);
+    opacity: 1;
+    margin-bottom: 15px;
+    animation: spin 1s ease-in-out;
+}
+
+.image-caption {
+    
+    opacity: 0;
+    transition: all 0.3s;
+    font-size: 15px;
+}
+
+.pop-image:hover + .image-caption {
+  opacity: 1;
+  background: rgba(0,0,0,0.3);
+  text-decoration-color: white;
+}
+
+.wave-bottom {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 80px;
+    background-size: 1200px 100%;
+
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100' preserveAspectRatio='none'><path d='M0 50 Q 300 0 600 50 T 1200 50 V100 H0 Z' fill='%234facfe'/></svg>");
+    background-repeat: repeat-x;
+    background-size: 1200px 100%;
+    animation: waves 10s linear infinite;
+}
+
+.wave-bottom-2 {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    height: 110px;
+
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100' preserveAspectRatio='none'><path d='M0 50 Q 300 0 600 50 T 1200 50 V100 H0 Z' fill='%234facfe'/></svg>");
+    background-repeat: repeat-x;
+    background-size: 1200px 100%;
+    animation-delay: 0.5s;
+    animation: waves 15s infinite linear;
+    opacity: 0.5;
+}
+
+.wave-bottom-3 {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    height: 110px;
+
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100' preserveAspectRatio='none'><path d='M0 50 Q 300 0 600 50 T 1200 50 V100 H0 Z' fill='%234facfe'/></svg>");
+    background-repeat: repeat-x;
+    background-size: 1200px 100%;
+    animation-delay: 1.5s;
+    animation: waves 12s infinite linear;
+    opacity: 0.25;
+}
+
+@keyframes waves {
+  0%   { 
+    background-position-x: 0; 
+    }
+  100% {
+     background-position-x: -1200px; 
+    }
+}
+
+@keyframes spin {
+    0% {
+        rotate: 0deg
+    }
+    10% {
+        rotate: -10deg
+    }
+    20% {
+        rotate: 5deg
+    }
+    90% {
+        rotate: 370deg
+    }
+    100% {
+        rotate: 360deg
+    }
+}
