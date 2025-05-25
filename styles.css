@@ -2,6 +2,23 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #018281;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#welcome {
+    width: 250px;
+    height: 30px;
+    position: absolute;
+    background-color: rgb(232, 232, 232);
+    left: 80px;
+    top: 1px;
+    line-height: 1.5px;
+    font-weight: bold;
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
 }
 
 .time {
@@ -9,13 +26,22 @@ html, body {
     width: 80px;
     height: 30px;
     background-color: rgb(161, 161, 161);
-    right: 10px;
-    top: 2px;
+    right: 2px;
+    top: 1px;
     border-top: 2px solid #404040;
     border-left: 2px solid #404040;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
     text-align:center;
     padding: 0;
     line-height: 1.5px;
+}
+
+#disclaimer {
+    position: absolute;
+    line-height: 1.0px;
+    top: 2px;
+    right: 100px;
 }
 
 #top {
@@ -26,7 +52,53 @@ html, body {
 .button1 {
     font-family: 'windows95';
     align-content: center;
+    display: none;
     
+}
+
+#menubar {
+    position: absolute;
+    bottom: -400px;
+    height: 300px;
+    left: 0;
+    width: 200px;
+    background-color: #C0C0C0;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-left: 2px solid #fff;
+    box-shadow: inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff;
+    font-family: 'windows95';
+    z-index: 100;
+    padding: 4px;
+    transition: all 0.15s ease-in
+}
+
+#menubar.show {
+    bottom: 40px;
+    display: flex;
+    transition: all 0.15s ease-out
+}
+
+#startButton {
+    font-family: 'windows95';
+    width:75px;
+    font-size: 14px;
+    padding: 2px 6px;
+    height: 35px;
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: #dfdfdf;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    box-shadow: inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff;
+
+    cursor: pointer;
+    border-radius: 0;
 }
 
 .bottom-container {
@@ -34,6 +106,7 @@ html, body {
     bottom: 0;
     height: 40px;
     left: 0;
+    right: 0;
     background-color: #c3c3c3;
     border-top: 2px solid #fff;
     border-left: 2px solid #fff;
@@ -42,19 +115,20 @@ html, body {
 
     font-family: 'windows95';
     display: flex;
-    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
     padding: 0 5px;
     box-sizing: border-box;
 
     z-index: 100;
-    width: 100%;
+    width: 100vw;
+    min-width: 0;
 }
 
 @font-face {
     font-family: 'windows95';
     src: url('w95fa.woff') format('woff');
 }
-
 
 .app-window {
     font-family: 'windows95';
@@ -64,6 +138,7 @@ html, body {
     box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     z-index: 5;
     user-select: none;
+    overflow-y: hidden;
 
     transform: scale(0);
     opacity: 0;
@@ -145,8 +220,10 @@ html, body {
     animation: waves 10s linear infinite;
 }
 
+
 .wave-bottom-2 {
-    position: fixed;
+    background-color: rgb(240, 240, 166);
+    position: absolute;
     bottom: 10px;
     width: 100%;
     height: 110px;
@@ -197,5 +274,47 @@ html, body {
     }
     100% {
         rotate: 360deg
+    }
+}
+
+@media (max-width: 600px) {
+    #welcome {
+        width: 100px;
+        height: 30px;
+        left: 80px;
+        top: 0;
+        
+    }
+
+    .time {
+        width: 70px;
+        font-size: 12px;
+        top: 3px;
+    }
+
+    #disclaimer {
+        display: none;
+    }
+
+    .bottom-container {
+        flex-direction: row;
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #startButton {
+        font-size: 12px;
+        padding: 1px 4px;
+    }
+
+    #menubar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .app-window {
+        width: 100px;
+        height: 100px;
     }
 }
