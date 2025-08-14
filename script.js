@@ -1,4 +1,4 @@
-
+let resizing = false;
 let alreadyExists = false;
 let alreadyExistsApp1 = false;
 let welcomeAppExists = false;
@@ -60,7 +60,7 @@ class App {
                 if(name == 'Wagabagabooboo') {
                     alreadyExists = false;
                 }
-                if(name == 'no') {
+                if(name == 'About Me') {
                     alreadyExistsApp1 = false;
                 }
                 if(name == 'Welcome') {
@@ -181,16 +181,66 @@ function welcomeApp() {
     }
 
     let viewondesktop = document.createElement('p');
-    viewondesktop.innerHTML = "For the best experience of this portfolio, please switch to the closest desktop near you. Some of the functionality is lost on a mobile device, though you can still see everything I've made.";
+    viewondesktop.innerHTML = "For the best experience of this portfolio, please switch to the closest desktop near you. Some of the functionality is lost on a mobile device.";
     viewondesktop.style.fontSize = 10 + 'px';
     viewondesktop.style.position = 'relative';
     viewondesktop.style.top = 10 + 'px';
+    viewondesktop.style.left = 10 + 'px';
     document.getElementById('test').appendChild(welcome.getApp());
     let header1 = document.createElement('p');
     header1.innerHTML = "Welcome to <b>Portfolio<span style='color:#fff'>06</span></b>";
     header1.style.position = 'absolute';
     header1.style.fontSize = 40 + 'px';
     header1.style.left = 30 + 'px';
+
+    let github = document.createElement('button');
+    github.className = 'github';
+    github.innerHTML = "GitHub";
+    github.style.position = 'absolute';
+    github.style.right = 5 + 'px';
+    github.style.top = 90 + 'px';
+    github.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        github.style.backgroundColor = 'gray';
+        github.style.boxShadow = 'none';
+        const outsideofclosebutton = () => {
+            github.style.backgroundColor = '#c4c4c4';
+            document.removeEventListener('mouseup', outsideofclosebutton);
+            github.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+        }
+        document.addEventListener('mouseup', outsideofclosebutton);
+    });
+    github.addEventListener('click', () => {
+        window.open('https://github.com/crimlegfish');
+    });
+
+    let aboutmebutton = document.createElement('button');
+    aboutmebutton.className = 'github';
+    aboutmebutton.innerHTML = "About Me";
+    aboutmebutton.style.position = 'absolute';
+    aboutmebutton.style.right  = 5 +'px';
+    aboutmebutton.style.top = 130 + 'px';
+    welcome.getApp().appendChild(aboutmebutton); 
+    welcome.getApp().appendChild(github);
+    aboutmebutton.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        aboutmebutton.style.backgroundColor = 'gray';
+        aboutmebutton.style.boxShadow = 'none';
+        const closeoutsideofbutton = () => {
+            aboutmebutton.removeEventListener('mouseup', closeoutsideofbutton);
+            aboutmebutton.style.backgroundColor = '#c4c4c4';
+            aboutmebutton.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+        }
+        document.addEventListener('mouseup', closeoutsideofbutton);
+    })
+
+    aboutmebutton.addEventListener('click', () => {
+        let tryApp = new App(300,  500, "About Me", 230, 80);
+        if(isMobile) {
+            tryApp = new App(150, 150, "About Me", 130, 80);
+        }
+        app1(tryApp);
+    })
 
     let video = document.createElement('div');
     video.style.display = 'flex';
@@ -203,8 +253,9 @@ function welcomeApp() {
     video.style.borderRight = '2px solid white';
     video.style.left = 30 + 'px';
     if(isMobile) {
-        video.style.width = 50 + 'px';
-        video.style.height = 50 + 'px';
+        video.style.width = 75 + 'px';
+        video.style.height = 75 + 'px';
+        video.style.left = 10 + 'px';
     }
     video.style.position = 'absolute';
     
@@ -223,7 +274,7 @@ function welcomeApp() {
     pressStart.style.position = 'absolute';
     pressStart.style.left = '10%';
     pressStart.style.top = '15%';
-    pressStart.innerHTML = "You can press the start button on the bottom left to view the projects I've made, along with their Github repositories, if such repositories exist. IMAGE GOES BELOW.";
+    pressStart.innerHTML = "You can press the start button on the bottom left to view the projects I've made, along with their Github repositories, if such repositories exist.";
     
     video.appendChild(pressStart);
     video.appendChild(didyouknow);
@@ -231,12 +282,53 @@ function welcomeApp() {
 
     header1.style.fontSize = 25 + 'px';
     if(isMobile) {
+        welcome.getApp().style.overflowWrap ='break-word';
         header1.style.fontSize = 12 + 'px';
+        header1.style.left = 10 + 'px';
+        header1.style.top = 20 + 'px';
     }
     let header06 = document.createElement('p');
     header06.innerHTML = "06";
     header06.style.fontFamily = "Sans-Serif";
     header06.style.color = "white";
+
+    let separator = document.createElement('div');
+    separator.style.width = 145 + 'px';
+    separator.style.height = 2 + 'px';
+    separator.style.backgroundColor = '#c4c4c4';
+    separator.style.position = 'absolute';
+    separator.style.right = 5 + 'px';
+    separator.style.top = 180 + 'px';
+    separator.style.borderTop = '1px solid #ffffff';
+    separator.style.borderLeft = '1px solid #ffffff';
+    separator.style.borderBottom = '1px solid #808080';
+    separator.style.borderRight = '1px solid #808080';
+    separator.style.boxSizing = 'border-box';
+
+    let resume = document.createElement('button');
+    resume.className = 'github';
+    resume.innerHTML = "Resume";
+    resume.style.position = 'absolute';
+    resume.style.right = 5 + 'px';
+    resume.style.top = 195 + 'px';
+    resume.addEventListener('mousedown', (e) => {
+        e.stopPropagation;
+        resume.style.backgroundColor = 'gray';
+        resume.style.boxShadow = 'none';
+
+        const liftoutside = () => {
+            resume.style.backgroundColor = '#c4c4c4';
+            resume.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+            document.removeEventListener('mouseup', liftoutside);
+        }
+        document.addEventListener('mouseup', liftoutside);
+    });
+    resume.addEventListener('click', () => {
+        window.open('https://drive.google.com/file/d/1c_B4r4JnMnytUqExnUtIDJLcgziyRiEJ/view?usp=sharing');
+    })
+
+    welcome.getApp().appendChild(resume);
+    welcome.getApp().appendChild(separator);
 
     welcome.getApp().appendChild(header1);
 
@@ -251,17 +343,36 @@ function welcomeApp() {
     });
     welcomeAppExists = true;
 
+    if(isMobile) {
+        didyouknow.style.fontSize = 13 + 'px';
+        pressStart.style.fontSize = 12 + 'px';
+        pressStart.innerHTML = "To view my projects, press the start button on the bottom left.";
+        video.style.height = 100 + 'px';
+        video.style.width = 100 + 'px';
+        resume.style.width = 80 + 'px';
+        resume.style.height = 20 + 'px';
+        resume.style.top = '75%';
+        github.style.width = 80 + 'px';
+        github.style.height = 20 + 'px';
+        github.style.top = '45%';
+        aboutmebutton.style.width = 80 + 'px';
+        aboutmebutton.style.height = 20 + 'px';
+        aboutmebutton.style.top = '55%';
+        separator.style.width = 80 + 'px';
+        separator.style.top = '70%';
+        welcome.getApp().style.overflow = 'hidden';
+    }
+
     doitall(welcome.getApp(), welcome.getHeader());
 }
 
-function app1() {
+function app1(tryApp) {
     if(alreadyExistsApp1) {
         return;
     }
-    const tryApp = new App(300,  500, "no", 230, 80);
 
     let tester23 = document.createElement('p');
-    tester23.innerHTML = "tester";
+    tester23.innerHTML = "Hello, my name is Angad Bhatia, and welcome to my portfolio. I am a student at the University of Wisconsin-Madison studying Computer Science (BS). Currently, my interests lie in low-level stuff, particularly with Operating System Development, and even more specifically, with how we virtualize resources and manage memory in computers.<br><br>Email: bhatia33@wisc.edu <br>Personal Email: angadbhatia122@gmail.com<br><br>Feel free to contact me :)";
     tryApp.getApp().appendChild(tester23);
 
     let waves1 = document.createElement('div');
@@ -340,7 +451,7 @@ function doitall(app, header) {
     app.addEventListener('mousedown', (e) => {
         offsetX = e.clientX - app.offsetLeft;
         offsetY = e.clientY - app.offsetTop;
-        console.log(offsetX);
+        console.log("X OFFSET:" + offsetX);
         if(offsetX >= app.getBoundingClientRect().width-10) {
             document.addEventListener('mousemove', resizeRight);
             document.addEventListener('mouseup', stop);
@@ -358,21 +469,23 @@ function doitall(app, header) {
     })
 
     header.addEventListener('mousedown', (e) => {
-
-        
+        e.stopPropagation();    
         offsetX = e.clientX - app.offsetLeft;
         offsetY = e.clientY - app.offsetTop;
         if(offsetX >= app.getBoundingClientRect().width-5) {
+            resizing = true;
             document.addEventListener('mousemove', resizeRight);
             document.addEventListener('mouseup', stop);
         }
 
         if(offsetX <= 5) {
+            resizing = true;
             document.addEventListener('mousemove', resizeLeft);
             document.addEventListener('mouseup', stop);
         }
 
         if(offsetY <= 5) {
+            resizing = true;
             document.addEventListener('mousemove', resizeTop);
             document.addEventListener('mouseup', stop);
         }
@@ -386,7 +499,7 @@ function doitall(app, header) {
             }
         }
 
-        if(!(offsetX >= app.getBoundingClientRect().width-5) && !(offsetX < 5) && !(offsetY < 5)) {
+        if(!resizing) {
             document.addEventListener('mousemove', move);
             document.addEventListener('mouseup', stop);
         }
@@ -396,7 +509,6 @@ function doitall(app, header) {
     function move(e) 
     {
         if(app.getBoundingClientRect().width >= window.innerWidth && app.getBoundingClientRect().height >= window.innerHeight-40) {
-            console.log("true");
             app.style.width = 400 + 'px';
             app.style.height = 400 + 'px';
             offsetX = app.offsetLeft;
@@ -404,6 +516,28 @@ function doitall(app, header) {
             const headerChild = app.children[0];
             const closeButtonChild = headerChild.children[0];
     
+            if(app.children.length >= 7) {
+                const button1 = app.children[1];
+                const button2 = app.children[2];
+                const button3 = app.children[4];
+                const videodiv = app.children[3];
+                const separatorapp = app.children[5];
+
+                button1.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+                button2.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+                button3.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+                separatorapp.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+                if(app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right <= 100) {
+                    button1.style.fontSize = 12 + 'px';
+                    button3.style.fontSize = 12 + 'px';
+                    button2.style.fontSize = 12 + 'px';
+                }
+                else {
+                    button1.style.fontSize = 14 + 'px';
+                    button3.style.fontSize = 14 + 'px';
+                    button2.style.fontSize = 14 + 'px';
+                }
+            }
             closeButtonChild.style.left = parseInt(app.style.width) - 25 + 'px';
         }
         let maxHorizontal = window.innerWidth - app.getBoundingClientRect().width;
@@ -411,14 +545,13 @@ function doitall(app, header) {
         
         app.style.left = Math.max(0, Math.min(e.clientX - offsetX, maxHorizontal)) + 'px';
         app.style.top = Math.max(0, Math.min(e.clientY - offsetY, maxVertical-40)) + 'px';
-        
-        console.log(app.style.left);
 
         appRight = app.getBoundingClientRect().right;
         appBottom = app.getBoundingClientRect().bottom;
     }
     function stop() 
     {
+        resizing = false;
         document.removeEventListener('mousemove', move);
         document.removeEventListener('mouseup', stop);
         document.removeEventListener('mousemove', resizeRight);
@@ -431,10 +564,34 @@ function doitall(app, header) {
         let appLeft = app.getBoundingClientRect().left;
         let maxWidth = window.innerWidth - appLeft;
 
-        app.style.width = Math.max(300, Math.min(e.clientX - appLeft, maxWidth)) + 'px';
+        app.style.width = Math.max(400, Math.min(e.clientX - appLeft, maxWidth)) + 'px';
 
         const headerChild = app.children[0];
         const closeButtonChild = headerChild.children[0];
+
+        if(app.children.length >= 7) {
+            const button1 = app.children[1];
+            const button2 = app.children[2];
+            const button3 = app.children[4];
+            const videodiv = app.children[3];
+            const separatorapp = app.children[5];
+
+            button1.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            button2.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            button3.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            separatorapp.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            if(app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right <= 100) {
+                button1.style.fontSize = 12 + 'px';
+                button3.style.fontSize = 12 + 'px';
+                button2.style.fontSize = 12 + 'px';
+                
+            }
+            else {
+                button1.style.fontSize = 14 + 'px';
+                button3.style.fontSize = 14 + 'px';
+                button2.style.fontSize = 14 + 'px';
+            }
+        }
     
         closeButtonChild.style.left = parseInt(app.style.width) - 25 + 'px';
         appRight = app.getBoundingClientRect().right;
@@ -451,20 +608,44 @@ function doitall(app, header) {
 
 
     function resizeLeft(e) {
-        if(appRight - (e.clientX - offsetX) > 300) {
+        if(appRight - (e.clientX - offsetX) > 400) {
             app.style.left = Math.max(0, e.clientX - offsetX) + 'px'; 
         }
         app.style.right = appRight;
 
-        app.style.width = Math.max(300, appRight - parseInt(app.style.left)) + 'px';
+        app.style.width = Math.max(400, appRight - parseInt(app.style.left)) + 'px';
 
         const headerChild = app.children[0];
         const closeButtonChild = headerChild.children[0];
+            if(app.children.length >= 7) {
+            const button1 = app.children[1];
+            const button2 = app.children[2];
+            const button3 = app.children[4];
+            const videodiv = app.children[3];
+            const separatorapp = app.children[5];
+
+            button1.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            button2.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            button3.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            separatorapp.style.width = app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right - 10 + 'px';
+            if(app.getBoundingClientRect().right - videodiv.getBoundingClientRect().right <= 100) {
+                button1.style.fontSize = 12 + 'px';
+                button3.style.fontSize = 12 + 'px';
+                button2.style.fontSize = 12 + 'px';
+                
+            }
+            else {
+                button1.style.fontSize = 14 + 'px';
+                button3.style.fontSize = 14 + 'px';
+                button2.style.fontSize = 14 + 'px';
+            }
+        }
     
         closeButtonChild.style.left = parseInt(app.style.width) - 25 + 'px';
     }
 
     function resizeTop(e) {
+        e.stopPropagation();
         if(appBottom - (e.clientY - offsetY) > 300) {
             app.style.top = Math.max(0, e.clientY - offsetY) + 'px';
         }
