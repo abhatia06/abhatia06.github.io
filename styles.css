@@ -101,6 +101,25 @@ html, body {
     border-radius: 0;
 }
 
+.github {
+    width: 145px;
+    font-size: 15px;
+    font-family: 'windows95';
+    padding: 2px 6px;
+    height: 30px;
+
+    border-top: 2px solid #fff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    border-left: 2px solid #fff;
+    box-shadow: inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff;
+
+    cursor: pointer;
+    border-radius: 0;
+    background-color: #c4c4c4;
+
+}
+
 .bottom-container {
     position: fixed;
     bottom: 0;
