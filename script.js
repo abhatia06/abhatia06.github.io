@@ -162,7 +162,7 @@ function menuCreation() {
         document.addEventListener('mouseup', closeoutsideofbutton);
     });
     osdevButton.addEventListener('click', () => {
-        window.open('https://github.com/crimlegfish/abOS');
+        window.open('https://github.com/abhatia06/abOS');
     });
     divcontainer.appendChild(osdevButton);
     let startbutton = document.getElementById('startButton');
@@ -235,7 +235,7 @@ function welcomeApp() {
         document.addEventListener('mouseup', outsideofclosebutton);
     });
     github.addEventListener('click', () => {
-        window.open('https://github.com/crimlegfish');
+        window.open('https://github.com/abhatia06');
     });
 
     let aboutmebutton = document.createElement('button');
