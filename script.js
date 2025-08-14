@@ -141,6 +141,30 @@ function menuCreation() {
     console.log("MENU CREATION CALLED");
 
     let divcontainer = document.getElementById('menubar');
+    let osdevButton = document.createElement('button');
+    osdevButton.innerHTML = "OS Development";
+    osdevButton.style.fontSize = 20 + 'px';
+    osdevButton.className = 'github';
+    osdevButton.style.position = 'absolute';
+    osdevButton.style.top = 0 + 'px';
+    osdevButton.style.left = 0 + 'px';
+    osdevButton.style.height = 75 + 'px';
+    osdevButton.style.width = 100 + '%';
+    osdevButton.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        osdevButton.style.backgroundColor = 'gray';
+        osdevButton.style.boxShadow = 'none';
+        const closeoutsideofbutton = () => {
+            osdevButton.removeEventListener('mouseup', closeoutsideofbutton);
+            osdevButton.style.backgroundColor = '#c4c4c4';
+            osdevButton.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+        }
+        document.addEventListener('mouseup', closeoutsideofbutton);
+    });
+    osdevButton.addEventListener('click', () => {
+        window.open('https://github.com/crimlegfish/abOS');
+    });
+    divcontainer.appendChild(osdevButton);
     let startbutton = document.getElementById('startButton');
 
     if(menuCreated) {
@@ -232,7 +256,7 @@ function welcomeApp() {
             aboutmebutton.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
         }
         document.addEventListener('mouseup', closeoutsideofbutton);
-    })
+    });
 
     aboutmebutton.addEventListener('click', () => {
         let tryApp = new App(300,  500, "About Me", 230, 80);
@@ -240,7 +264,7 @@ function welcomeApp() {
             tryApp = new App(150, 150, "About Me", 130, 80);
         }
         app1(tryApp);
-    })
+    });
 
     let video = document.createElement('div');
     video.style.display = 'flex';
@@ -324,7 +348,7 @@ function welcomeApp() {
         document.addEventListener('mouseup', liftoutside);
     });
     resume.addEventListener('click', () => {
-        window.open('https://drive.google.com/file/d/1c_B4r4JnMnytUqExnUtIDJLcgziyRiEJ/view?usp=sharing');
+        window.open('https://drive.google.com/file/d/1c_B4r4JnMnytUqExnUtIDJLcgziyRiEJ/view?usp=drive_link');
     })
 
     welcome.getApp().appendChild(resume);
