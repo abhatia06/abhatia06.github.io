@@ -396,7 +396,14 @@ function app1(tryApp) {
     }
 
     let tester23 = document.createElement('p');
-    tester23.innerHTML = "Hello, my name is Angad Bhatia, and welcome to my portfolio. I am a student at the University of Wisconsin-Madison studying Computer Science (BS). Currently, my interests lie in low-level stuff, particularly with Operating System Development, and even more specifically, with how we virtualize resources and manage memory in computers.<br><br>Email: bhatia33@wisc.edu <br>Personal Email: angadbhatia122@gmail.com<br><br>Feel free to contact me :)";
+    tester23.innerHTML = "Hello, my name is Angad Bhatia, and welcome to my portfolio. " +
+    "I am a student at the University of Wisconsin-Madison studying Computer Science (BS). " + 
+    "Currently, my interests lie in low-level topics, particularly in  Operating System Development, " +
+    "and even more specifically, in how we virtualize resources and manage memory in computers. " +
+    "I also plan on studying a little bit about embedded systems, particularly PIC microcontrollers, RTOSs (Real Time Operating Systems), " +
+    "and I want to learn how to implement concurrency-related concepts in the future, like semaphores, mutexes, " +
+    "conditional variables, etc., because they align with my interests, and they just so happen to be things a lot " +
+    "of companies are looking for. <br><br>Email: bhatia33@wisc.edu <br>Personal Email: angadbhatia122@gmail.com<br>Feel free to contact me :)";
     tryApp.getApp().appendChild(tester23);
 
     let waves1 = document.createElement('div');
@@ -716,4 +723,5 @@ function placeInBounds(app) {
         app.style.top = 10 + 'px';
     }
 }
+
 
