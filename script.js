@@ -1,7 +1,11 @@
+// THIS CODE IS INCREDIBLY MESSY. IN THE FUTURE, I NEED TO COME BACK TO THIS AND MAKE IT NEATER BY SEPARATING REPEATED CODE SEGMENTS INTO ITS OWN FUNCTION!!
+
 let resizing = false;
 let alreadyExists = false;
+let webDevExists = false;
 let alreadyExistsApp1 = false;
 let welcomeAppExists = false;
+let ue5exists = false;
 let menuCreated = false;
 let count = 0;
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -55,9 +59,9 @@ class App {
                 }
 
                 this.app.remove(); 
-
+                // this is probably the most inefficient way to do this, but it works
                 console.log(this.app.exists);
-                if(name == 'Wagabagabooboo') {
+                if(name == 'OSDev') {
                     alreadyExists = false;
                 }
                 if(name == 'About Me') {
@@ -65,6 +69,12 @@ class App {
                 }
                 if(name == 'Welcome') {
                     welcomeAppExists = false;
+                }
+                if(name == 'WebDev') {
+                    webDevExists = false;
+                }
+                if(name == "UE5") {
+                    ue5exists = false;
                 }
             });
         }, {once:true});
@@ -141,6 +151,32 @@ function menuCreation() {
     console.log("MENU CREATION CALLED");
 
     let divcontainer = document.getElementById('menubar');
+
+    // TODO: SO MUCH REPEATED CODE HERE. MAKE BUTTON GENERATION INTO A SEPARATE FUNCTION/METHOD!!
+    let webdevButton = document.createElement('button');
+    webdevButton.innerHTML = "Web Development";
+    webdevButton.style.fontSize = 20 + 'px';
+    webdevButton.className = 'github';
+    webdevButton.style.position = 'absolute';
+    webdevButton.style.top = 75 + 'px';
+    webdevButton.style.left = 0 + 'px';
+    webdevButton.style.height = 75 + 'px';
+    webdevButton.style.width = 100 + '%';
+    webdevButton.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        webdevButton.style.backgroundColor = 'gray';
+        webdevButton.style.boxShadow = 'none';
+        const closeoutsideofbutton = () => {
+            webdevButton.removeEventListener('mouseup', closeoutsideofbutton);
+            webdevButton.style.backgroundColor = '#c4c4c4';
+            webdevButton.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+        }
+        document.addEventListener('mouseup', closeoutsideofbutton);
+    });
+    webdevButton.addEventListener('click', () => {
+        webdevApp();
+    });
+    divcontainer.appendChild(webdevButton);
     let osdevButton = document.createElement('button');
     osdevButton.innerHTML = "OS Development";
     osdevButton.style.fontSize = 20 + 'px';
@@ -162,9 +198,34 @@ function menuCreation() {
         document.addEventListener('mouseup', closeoutsideofbutton);
     });
     osdevButton.addEventListener('click', () => {
-        window.open('https://github.com/abhatia06/abOS');
+        createOSDev();
     });
     divcontainer.appendChild(osdevButton);
+
+    let ue5button = document.createElement('button');
+    ue5button.innerHTML = "UE5 Procedural Generation";
+    ue5button.style.fontSize = 20 + 'px';
+    ue5button.className = 'github';
+    ue5button.style.position = 'absolute';
+    ue5button.style.top = 150 + 'px';
+    ue5button.style.left = 0 + 'px';
+    ue5button.style.height = 75 + 'px';
+    ue5button.style.width = 100 + '%';
+    ue5button.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        ue5button.style.backgroundColor = 'gray';
+        ue5button.style.boxShadow = 'none';
+        const closeoutsideofbutton = () => {
+            ue5button.removeEventListener('mouseup', closeoutsideofbutton);
+            ue5button.style.backgroundColor = '#c4c4c4';
+            ue5button.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+        }
+        document.addEventListener('mouseup', closeoutsideofbutton);
+    });
+    ue5button.addEventListener('click', () => {
+        ue5app();
+    });
+    divcontainer.appendChild(ue5button);
     let startbutton = document.getElementById('startButton');
 
     if(menuCreated) {
@@ -404,6 +465,7 @@ function app1(tryApp) {
     "and I want to learn how to implement concurrency-related concepts in the future, like semaphores, mutexes, " +
     "conditional variables, etc., because they align with my interests, and they just so happen to be things a lot " +
     "of companies are looking for. <br><br>Email: bhatia33@wisc.edu <br>Personal Email: angadbhatia122@gmail.com<br>Feel free to contact me :)";
+
     tryApp.getApp().appendChild(tester23);
 
     let waves1 = document.createElement('div');
@@ -434,13 +496,29 @@ function app1(tryApp) {
     doitall(tryApp.getApp(), tryApp.getHeader());
 }
 
-function createApp() {
+function createOSDev() {
     if(alreadyExists) {
         return;
     }
 
-    const app1 = new App(200, 200, "Wagabagabooboo", 150, 400);
-    
+    const app1 = new App(300, 600, "OSDev", 600, 100);
+    let yap = document.createElement('p');
+    yap.innerHTML = "This is my first ever operating system, abOS! (Very creative name, I know) " +
+    "The purpose for this project was to really learn about low-level stuff, because I found it super cool. " +
+    "I took a course in my university, CS 252, that went over a mini computer known as the LC-3. In there, " +
+    "I got an introduction to the CPU, along with a mini OS, (if you could even call it that? Tanenbaum sure " +
+    "wouldn't, I think). The book we used was Introduction to Computer Systems by Patt & Patel. The book was " +
+    "really good! And it inspired me to read more stuff, and so I decided to go on this OS development journey " +
+    "and read Operating Systems: Three Easy Pieces by Remzi and Andrea Arpaci-Dusseau. Or just OSTEP. Now, though I " +
+    "SAY I made an OS, in reality, it's not complete. I still haven't implemented any scheduling-based things, so it's " +
+    "not a proper OS. You couldn't classify as a time-sharing OS, nor could you classify it as a real-time OS, so it's just " +
+    "nothing? I guess? In the future, I plan on coming back to this project and continue tinkering with it until I am satisfied " +
+    "though, knowing my nature, I don't know if I'll ever be satisfied. Anyway, more info on my github:"
+    app1.getApp().appendChild(yap);
+    let link = document.createElement('a');
+    link.href = "https://github.com/abhatia06/abOS";
+    link.innerHTML = "here!";
+    app1.getApp().appendChild(link);
     document.getElementById('test').appendChild(app1.getApp());
     myList.push(app1.getApp());
 
@@ -452,6 +530,65 @@ function createApp() {
     doitall(app1.getApp(), app1.getHeader());
 }
 
+function webdevApp() {
+    if(webDevExists) {
+        return;
+    }
+
+    const app1 = new App(300, 600, "WebDev", 600, 100);
+    let yap = document.createElement('p');
+    yap.innerHTML = "Web development is something I've partaken in a little bit. I know HTML, CSS, and JS " +
+    "and I like to think I've made some cool stuff with just those 3, (like this portfolio! I think it's cool..) " +
+    "I began web development in around 2024, which aligns with my resume, but I haven't been doing frontend stuff " +
+    "for ALL THIS TIME. In reality, I did it for about a month during the summer of 2024, then I did it for about a month " +
+    "this summer too, to learn JS, make my portfolio, and make my mother's business look nicer. Both of these projects " +
+    "I used to dip my toes into the world of web development, and I did enjoy them. In the future I plan to come back, learn how " +
+    "to code in HTML/CSS/JS better, and also learn how to use tailwind, react, etc.. Anyway, here's the Github for my portfolio:";  
+    app1.getApp().appendChild(yap);
+    let link = document.createElement('a');
+    link.href = "https://github.com/abhatia06/abhatia06.github.io";
+    link.innerHTML = "here!";
+    app1.getApp().appendChild(link);
+    document.getElementById('test').appendChild(app1.getApp());
+    myList.push(app1.getApp());
+
+    requestAnimationFrame( () => {
+        app1.getApp().classList.add('show');
+    });
+
+    webDevExists = true;
+    doitall(app1.getApp(), app1.getHeader());
+}
+
+function ue5app() {
+    if(ue5exists) {
+        return;
+    }
+
+    const app1 = new App(300, 600, "UE5", 600, 100);
+    let yap = document.createElement('p');
+    yap.innerHTML = "Unfortunately, I do not have a Github for this project, as I didn't really know " +
+    "how to save node-based scripting from UE5 onto Github then. (Nor do I know now, but even if I did, I " +
+    "no longer have the files for it). However, I can provide a more comprehensive idea of how the procedural " +
+    "generation worked. Basically, I abused the arrow actors that UE5 gave us. Each pre-made room had distinct " +
+    "arrows that were invisible on playtime that basically showcased where an exit/entrance for a room was. " +
+    "then, all I had to do was just utilize the relative position & orientation of the arrow from the center of the room object " +
+    "to figure out where in the world I needed to place it to connect to a room. Since each room's exit arrow also had a " +
+    "hitbox actor above it, I could just utilize the world position of that hitbox to figure out how to connect the rooms. " +
+    "This project was also one of the first times I used inheritance in a project. Each room was a descendant of the basic rectangular " +
+    "room with arrows and whatnot, so it made making new rooms easier. Then, all I had to do was place each room in a list, " + 
+    "and use a random number generator to just choose what room to place next from the list whenever the user overlapped with an exit hitbox";
+    app1.getApp().appendChild(yap);
+    document.getElementById('test').appendChild(app1.getApp());
+    myList.push(app1.getApp());
+
+    requestAnimationFrame( () => {
+        app1.getApp().classList.add('show');
+    });
+
+    ue5exists = true;
+    doitall(app1.getApp(), app1.getHeader());
+}
 
 
 
@@ -723,5 +860,4 @@ function placeInBounds(app) {
         app.style.top = 10 + 'px';
     }
 }
-
 
