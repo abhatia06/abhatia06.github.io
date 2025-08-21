@@ -538,16 +538,15 @@ function webdevApp() {
     const app1 = new App(300, 600, "WebDev", 600, 100);
     let yap = document.createElement('p');
     yap.innerHTML = "Web development is something I've partaken in a little bit. I know HTML, CSS, and JS " +
-    "and I like to think I've made some cool stuff with just those 3, (like this portfolio! I think it's cool..) " +
-    "I began web development in around 2024, which aligns with my resume, but I haven't been doing frontend stuff " +
-    "for ALL THIS TIME. In reality, I did it for about a month during the summer of 2024, then I did it for about a month " +
-    "this summer too, to learn JS, make my portfolio, and make my mother's business look nicer. Both of these projects " +
-    "I used to dip my toes into the world of web development, and I did enjoy them. In the future I plan to come back, learn how " +
-    "to code in HTML/CSS/JS better, and also learn how to use tailwind, react, etc.. Anyway, here's the Github for my portfolio:";  
+    "and I like to think I've made some cool stuff with just those three, (like this portfolio! I think it's cool..) " +
+    "I began web development in around 2024, and took  I continued to hone my skills on these languages, (though, very slowly. I wasn't focusing on web development for the full year). In the future " +
+    "I want to learn more about networking, and also learn how to use tools such as tailwind, react, and more. Though I stated I am very " +
+    "interested in low-level, (or even backend) development, that does not mean I am also not interested in front-end, (or high-level) development. " +
+    "My brief time spent on web development has been fun! And I like doing fun things :)";
     app1.getApp().appendChild(yap);
     let link = document.createElement('a');
     link.href = "https://github.com/abhatia06/abhatia06.github.io";
-    link.innerHTML = "here!";
+    link.innerHTML = "View the Github for this portfolio!";
     app1.getApp().appendChild(link);
     document.getElementById('test').appendChild(app1.getApp());
     myList.push(app1.getApp());
@@ -860,4 +859,5 @@ function placeInBounds(app) {
         app.style.top = 10 + 'px';
     }
 }
+
 
