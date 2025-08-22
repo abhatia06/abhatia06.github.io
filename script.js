@@ -1,5 +1,3 @@
-// THIS CODE IS INCREDIBLY MESSY. IN THE FUTURE, I NEED TO COME BACK TO THIS AND MAKE IT NEATER BY SEPARATING REPEATED CODE SEGMENTS INTO ITS OWN FUNCTION!!
-
 let resizing = false;
 let alreadyExists = false;
 let webDevExists = false;
@@ -7,6 +5,7 @@ let alreadyExistsApp1 = false;
 let welcomeAppExists = false;
 let ue5exists = false;
 let menuCreated = false;
+let classesExist = false;
 let count = 0;
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const myList = [];
@@ -73,8 +72,11 @@ class App {
                 if(name == 'WebDev') {
                     webDevExists = false;
                 }
-                if(name == "UE5") {
+                if(name == 'UE5') {
                     ue5exists = false;
+                }
+                if(name == 'Future Classes') {
+                    classesExist = false;
                 }
             });
         }, {once:true});
@@ -158,9 +160,9 @@ function menuCreation() {
     webdevButton.style.fontSize = 20 + 'px';
     webdevButton.className = 'github';
     webdevButton.style.position = 'absolute';
-    webdevButton.style.top = 75 + 'px';
+    webdevButton.style.top = 80 + 'px';
     webdevButton.style.left = 0 + 'px';
-    webdevButton.style.height = 75 + 'px';
+    webdevButton.style.height = 80 + 'px';
     webdevButton.style.width = 100 + '%';
     webdevButton.addEventListener('mousedown', (e) => {
         e.stopPropagation();
@@ -184,7 +186,7 @@ function menuCreation() {
     osdevButton.style.position = 'absolute';
     osdevButton.style.top = 0 + 'px';
     osdevButton.style.left = 0 + 'px';
-    osdevButton.style.height = 75 + 'px';
+    osdevButton.style.height = 80 + 'px';
     osdevButton.style.width = 100 + '%';
     osdevButton.addEventListener('mousedown', (e) => {
         e.stopPropagation();
@@ -207,9 +209,9 @@ function menuCreation() {
     ue5button.style.fontSize = 20 + 'px';
     ue5button.className = 'github';
     ue5button.style.position = 'absolute';
-    ue5button.style.top = 150 + 'px';
+    ue5button.style.top = 160 + 'px';
     ue5button.style.left = 0 + 'px';
-    ue5button.style.height = 75 + 'px';
+    ue5button.style.height = 80 + 'px';
     ue5button.style.width = 100 + '%';
     ue5button.addEventListener('mousedown', (e) => {
         e.stopPropagation();
@@ -226,6 +228,31 @@ function menuCreation() {
         ue5app();
     });
     divcontainer.appendChild(ue5button);
+
+    let skillsButton = document.createElement('button');
+    skillsButton.innerHTML = "Future Classes";
+    skillsButton.style.fontSize = 20 + 'px';
+    skillsButton.className = 'github';
+    skillsButton.style.position = 'absolute';
+    skillsButton.style.top = 240 + 'px';
+    skillsButton.style.left = 0 + 'px';
+    skillsButton.style.height = 80 + 'px';
+    skillsButton.style.width = 100 + '%';
+    skillsButton.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        skillsButton.style.backgroundColor = 'gray';
+        skillsButton.style.boxShadow = 'none';
+        const closeoutsideofbutton = () => {
+            skillsButton.removeEventListener('mouseup', closeoutsideofbutton);
+            skillsButton.style.backgroundColor = '#c4c4c4';
+            skillsButton.style.boxShadow = 'inset -1px -1px 0 #00000034, inset 1px 1px 0 #fff';
+        }
+        document.addEventListener('mouseup', closeoutsideofbutton);
+    });
+    skillsButton.addEventListener('click', () => {
+        futureClasses();
+    });
+    divcontainer.appendChild(skillsButton);
     let startbutton = document.getElementById('startButton');
 
     if(menuCreated) {
@@ -361,8 +388,16 @@ function welcomeApp() {
     pressStart.style.top = '15%';
     pressStart.innerHTML = "You can press the start button on the bottom left to view the projects I've made, along with their Github repositories, if such repositories exist.";
     
+    let note = document.createElement('p');
+    note.style.fontSize = 15 + 'px';
+    note.style.position = 'absolute';
+    note.style.left = '10%';
+    note.style.top = `calc(${pressStart.style.top} + 100px)`;
+    note.innerHTML = "<b>NOTE</b>:<br>If you're on PC, you can drag the \"apps\" around and resize them, just how you would any other " +
+    "app on your actual computer.";
     video.appendChild(pressStart);
     video.appendChild(didyouknow);
+    video.appendChild(note);
     welcome.getApp().appendChild(video);
 
     header1.style.fontSize = 25 + 'px';
@@ -538,15 +573,16 @@ function webdevApp() {
     const app1 = new App(300, 600, "WebDev", 600, 100);
     let yap = document.createElement('p');
     yap.innerHTML = "Web development is something I've partaken in a little bit. I know HTML, CSS, and JS " +
-    "and I like to think I've made some cool stuff with just those three, (like this portfolio! I think it's cool..) " +
-    "I began web development in around 2024, and took  I continued to hone my skills on these languages, (though, very slowly. I wasn't focusing on web development for the full year). In the future " +
-    "I want to learn more about networking, and also learn how to use tools such as tailwind, react, and more. Though I stated I am very " +
-    "interested in low-level, (or even backend) development, that does not mean I am also not interested in front-end, (or high-level) development. " +
-    "My brief time spent on web development has been fun! And I like doing fun things :)";
+    "and I like to think I've made some cool stuff with just those 3, (like this portfolio! I think it's cool..) " +
+    "I began web development in around 2024, which aligns with my resume, but I haven't been doing frontend stuff " +
+    "for ALL THIS TIME. In reality, I did it for about a month during the summer of 2024, then I did it for about a month " +
+    "this summer too, to learn JS, make my portfolio, and make my mother's business look nicer. Both of these projects " +
+    "I used to dip my toes into the world of web development, and I did enjoy them. In the future I plan to come back, learn how " +
+    "to code in HTML/CSS/JS better, and also learn how to use tailwind, react, etc.. Anyway, here's the Github for my portfolio:";  
     app1.getApp().appendChild(yap);
     let link = document.createElement('a');
     link.href = "https://github.com/abhatia06/abhatia06.github.io";
-    link.innerHTML = "View the Github for this portfolio!";
+    link.innerHTML = "here!";
     app1.getApp().appendChild(link);
     document.getElementById('test').appendChild(app1.getApp());
     myList.push(app1.getApp());
@@ -589,7 +625,31 @@ function ue5app() {
     doitall(app1.getApp(), app1.getHeader());
 }
 
+function futureClasses() {
+    if(classesExist) {
+        return;
+    }
 
+    const app1 = new App(300, 600, "Future Classes", 600, 100);
+    let yap = document.createElement('p');
+    yap.innerHTML = "This section isn't about any projects I've made. This section is more for " +
+    "any recruiter interested in what I will be learning in the future from either my classes, or my " +
+    "personal projects.<br><br><b>Currently Finished Classes</b>: Introduction to Probability and Markov Chain Models(MATH331), " + 
+    "Elementary Matrices and Linear Algebra(MATH340), Introduction to Computer Engineering(CS/ECE252), Introduction to Discrete Mathematics(MATH240), " +
+    "Programming II and III(CS 300 and 400 respectively)<br><br><b>Future Classes (THIS YEAR): </b>Introduction to Artifical Intelligence(CS540), Building User Interfaces(CS571), " +
+    "Introduction to Combinatorial Optimization(CS425), Machine Organization and Programming(CS354), Introduction to Operating Systems(CS537)<br><br>" + 
+    "<b>Things I'm going to learn(THIS YEAR)</b>: SQL, Verilog, Matlab, Embedded Systems (PIC microcontroller stuff? Maybe?), Scheduler implementations, React";
+    app1.getApp().appendChild(yap);
+    document.getElementById('test').appendChild(app1.getApp());
+    myList.push(app1.getApp());
+
+    requestAnimationFrame( () => {
+        app1.getApp().classList.add('show');
+    });
+
+    classesExist = true;
+    doitall(app1.getApp(), app1.getHeader());
+}
 
 
 // main function to control movement, resizing, etc.
@@ -859,5 +919,4 @@ function placeInBounds(app) {
         app.style.top = 10 + 'px';
     }
 }
-
 
