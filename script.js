@@ -637,7 +637,7 @@ function futureClasses() {
     "personal projects.<br><br><b>Currently Finished Classes</b>: Introduction to Probability and Markov Chain Models(MATH331), " + 
     "Elementary Matrices and Linear Algebra(MATH340), Introduction to Computer Engineering(CS/ECE252), Introduction to Discrete Mathematics(MATH240), " +
     "Programming II and III(CS 300 and 400 respectively)<br><br><b>Future Classes (THIS YEAR): </b>Introduction to Artifical Intelligence(CS540), Building User Interfaces(CS571), " +
-    "Introduction to Combinatorial Optimization(CS425), Machine Organization and Programming(CS354), Introduction to Operating Systems(CS537)<br><br>" + 
+    "Introduction to Combinatorial Optimization(CS425), Machine Organization and Programming(CS354), Introduction to Operating Systems(CS537), Introduction to Algorithms(CS577)<br><br>" + 
     "<b>Things I'm going to learn(THIS YEAR)</b>: SQL, Verilog, Matlab, Embedded Systems (PIC microcontroller stuff? Maybe?), Scheduler implementations, React";
     app1.getApp().appendChild(yap);
     document.getElementById('test').appendChild(app1.getApp());
@@ -919,4 +919,5 @@ function placeInBounds(app) {
         app.style.top = 10 + 'px';
     }
 }
+
 
