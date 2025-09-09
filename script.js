@@ -536,23 +536,24 @@ function createOSDev() {
         return;
     }
 
-    const app1 = new App(300, 600, "OSDev", 600, 100);
+    const app1 = new App(450, 600, "OSDev", 600, 100);
     let yap = document.createElement('p');
-    yap.innerHTML = "This is my first ever operating system, abOS! (Very creative name, I know) " +
-    "The purpose for this project was to really learn about low-level stuff, because I found it super cool. " +
-    "I took a course in my university, CS 252, that went over a mini computer known as the LC-3. In there, " +
-    "I got an introduction to the CPU, along with a mini OS, (if you could even call it that? Tanenbaum sure " +
-    "wouldn't, I think). The book we used was Introduction to Computer Systems by Patt & Patel. The book was " +
-    "really good! And it inspired me to read more stuff, and so I decided to go on this OS development journey " +
-    "and read Operating Systems: Three Easy Pieces by Remzi and Andrea Arpaci-Dusseau. Or just OSTEP. Now, though I " +
-    "SAY I made an OS, in reality, it's not complete. I still haven't implemented any scheduling-based things, so it's " +
-    "not a proper OS. You couldn't classify as a time-sharing OS, nor could you classify it as a real-time OS, so it's just " +
-    "nothing? I guess? In the future, I plan on coming back to this project and continue tinkering with it until I am satisfied " +
-    "though, knowing my nature, I don't know if I'll ever be satisfied. Anyway, more info on my github:"
+    yap.innerHTML = "Hello, this is a <b>Toy 32-bit Operating System</b> that I've built from scratch " +
+    "using the GCC cross-compiler and the NASM assembler. The OS implements (almost) every key feature of a monolithic kernel, " +
+    "including: <br><br>" + 
+    "- A custom file system that allows for the existence of directories, files, and persists the state of said files and directories " + 
+    "after shutdown.<br><br>" + 
+    "- A virtual memory manager that enables paging and maps the kernel sitting at 0x100000 (1MB physical memory) to 0xC0000000 virtual memory<br><br>" + 
+    "- A physical memory manager that divides the full 4GB physical memory into 4KB chunks (or frames) and manages said chunks using a bitmap approach<br><br>" +
+    "- A GDT and IDT, both which are necessary and required by the CPU when operating in protected mode. The GDT enables segmentation, " + 
+    "but is now obsolete due to paging, and the IDT is the replacement for the IVT which the CPU can no longer use when it is in 32-bit protected mode.<br><br>" + 
+    "- Setting up the 8259 PIC, a peripheral that allows for the control of external hardware, like the mouse, keyboard, and audio.<br><br>" + 
+    "- Parts of the C standard library, including custom malloc and printf implementations.<br><br>" + 
+    "Future plans include adding a Round-Robin scheduler, a GUI, possibly switching to 64-bit, among other things."; 
     app1.getApp().appendChild(yap);
     let link = document.createElement('a');
     link.href = "https://github.com/abhatia06/abOS";
-    link.innerHTML = "here!";
+    link.innerHTML = "Github Repo";
     app1.getApp().appendChild(link);
     document.getElementById('test').appendChild(app1.getApp());
     myList.push(app1.getApp());
