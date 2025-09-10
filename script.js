@@ -571,20 +571,27 @@ function webdevApp() {
         return;
     }
 
-    const app1 = new App(300, 600, "WebDev", 600, 100);
+    const app1 = new App(450, 600, "WebDev", 600, 100);
     let yap = document.createElement('p');
-    yap.innerHTML = "Web development is something I've partaken in a little bit. I know HTML, CSS, and JS " +
-    "and I like to think I've made some cool stuff with just those 3, (like this portfolio! I think it's cool..) " +
-    "I began web development in around 2024, which aligns with my resume, but I haven't been doing frontend stuff " +
-    "for ALL THIS TIME. In reality, I did it for about a month during the summer of 2024, then I did it for about a month " +
-    "this summer too, to learn JS, make my portfolio, and make my mother's business look nicer. Both of these projects " +
-    "I used to dip my toes into the world of web development, and I did enjoy them. In the future I plan to come back, learn how " +
-    "to code in HTML/CSS/JS better, and also learn how to use tailwind, react, etc.. Anyway, here's the Github for my portfolio:";  
+    yap.innerHTML = "Web development is something I like to play around with from time to time. " + 
+    "All of my web development skills are mostly <b>self taught</b>, and I learned how to make websites and host " +
+    "them through the development of <a href='https://github.com/abhatia06/abhatia06.github.io'>this portfolio</a>, and " +
+    "through the development of a <a href='https://galaxyhomedaycare.com'>local business' website</a>. <br><br>" +
+    "This portfolio website abuses JavaScript and the getBoundingClientRect() function heavily to make it seem like" +
+    "there are actual \"apps\", when in reality they are just big div elements. I manage to make it seem like you can " + 
+    "re-size the apps by simply using the CSS width element, the position of the mouse on the screen, and the " + 
+    "position of the left/right/top/bottom edge to calculate how to re-size the apps. Movement was just calculating the position " + 
+    "of the mouse offset from the origin of the div (top right of the app), and then updating the apps position to be based on the " + 
+    "offset and the position of the mouse on the screen.<br><br> The novelty of the local business' website comes from the " + 
+    "galaxy visual-theme I made for it. Each star is a small div that is randomly placed based on a random function, and each star's animation " + 
+    "cycle is also randomly based on a random function. The color-scheme is a simple radial-gradient on a black canvas, and the shooting stars " + 
+    "have a 30% chance of occuring every 1.5 seconds and the place where they occur are randomly selected. Each shooting star has an (x,y) starting coordinate " +
+    "similar to a regular star, but they also have a length (how long the trail is going to be), and an alpha value that controls the opacity/transparency. " + 
+    "Then, it is as simple as abusing the HTML's canvas element's beginPath(), moveTo(), lineTo(), and stroke() functions that allow for us to \"draw\" stuff. " + 
+    "We move the star to the starting coordinate (moveTo), begin the path, and then move it based on the length, before using stroke() to draw the line. Each frame, " + 
+    "the star's (x,y) position also increase (move down-right), and its alpha value decreases slightly (loses opacity), until it has lost all opacity, after which we can " + 
+    "remove it from the list of shooting stars.";  
     app1.getApp().appendChild(yap);
-    let link = document.createElement('a');
-    link.href = "https://github.com/abhatia06/abhatia06.github.io";
-    link.innerHTML = "here!";
-    app1.getApp().appendChild(link);
     document.getElementById('test').appendChild(app1.getApp());
     myList.push(app1.getApp());
 
