@@ -444,7 +444,7 @@ function welcomeApp() {
         document.addEventListener('mouseup', liftoutside);
     });
     resume.addEventListener('click', () => {
-        window.open('https://drive.google.com/file/d/1c_B4r4JnMnytUqExnUtIDJLcgziyRiEJ/view?usp=drive_link');
+        window.open('https://drive.google.com/file/d/1P4esUrn1wlRpfl_2eLbIiKsQP027_9QM/view?usp=sharing');
     })
 
     welcome.getApp().appendChild(resume);
